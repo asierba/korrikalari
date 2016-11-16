@@ -1,0 +1,13 @@
+### F# ###
+lib/debug
+lib/release
+Debug
+*.suo
+*.user
+obj
+bin
+*.exe
+!.paket/paket.bootstrapper.exe
+
+### Others ###
+.DS_Store
