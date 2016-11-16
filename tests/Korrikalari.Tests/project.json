@@ -5,8 +5,6 @@
     "compilerName": "fsc",
     "compile": {
       "includeFiles": [
-        "Library.fs",
-        "OsmConverter.fs",
         "OsmConvertionTests.fs"
       ]
     }
