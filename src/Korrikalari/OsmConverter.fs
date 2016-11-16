@@ -8,7 +8,6 @@ type Street = { name: string; points: Point list}
 
 let xn name = XName.Get(name)
 
-
 let convert xml:seq<Street> = 
     match xml with
     | "" -> Seq.empty
