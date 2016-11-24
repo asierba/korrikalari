@@ -11,3 +11,4 @@ bin
 
 ### Others ###
 .DS_Store
+strava.token
