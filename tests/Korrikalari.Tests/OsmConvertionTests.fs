@@ -104,3 +104,41 @@ module OsmConvertionTests =
                             { lat= "57"; lon= "43"; id="5" }]}
             ]
         Assert.Equal<Street list>(result, streets)
+
+    [<Fact>]
+    let ``duplicated street names get merged into one``() =
+        let osmXml = XElement.Parse("""<osm>
+        <node id="1" lat="54" lon="12"/>
+        <node id="2" lat="54" lon="13"/>
+        <node id="3" lat="54" lon="14"/>
+        <node id="4" lat="56" lon="23"/>
+        <node id="5" lat="57" lon="43"/>
+        <way>
+            <nd ref="1"/>
+            <nd ref="2"/>
+            <nd ref="3"/>
+            <tag k="highway" />
+            <tag k="name" v="Duplicated Street"/>
+        </way>
+        <way>
+            <nd ref="3"/>
+            <nd ref="4"/>
+            <nd ref="5"/>
+            <tag k="highway" />
+            <tag k="name" v="Duplicated Street"/>
+        </way>
+        </osm>""")
+        
+    
+        let result = convert osmXml |> Seq.toList
+
+        let streets = [ 
+            {   name = "Duplicated Street"; 
+                points = [  { lat= "54"; lon= "12"; id="1" };
+                            { lat= "54"; lon= "13"; id="2" }; 
+                            { lat= "54"; lon= "14"; id="3" };  
+                            { lat= "54"; lon= "14"; id="3" }; 
+                            { lat= "56"; lon= "23"; id="4" }; 
+                            { lat= "57"; lon= "43"; id="5" }]}
+            ]
+        Assert.Equal<Street list>(result, streets)

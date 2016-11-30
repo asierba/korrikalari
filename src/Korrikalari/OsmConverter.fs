@@ -6,7 +6,7 @@ module OsmConverter =
     open System.Xml.Linq
 
     type Point = { lat: string; lon: string; id:string}
-    type Street = { name: string; points: Point list}
+    type Street = { name: string; points: Point seq}
 
     let xn name = XName.Get(name)
 
@@ -33,8 +33,13 @@ module OsmConverter =
     let wayHasName (wayXml:XElement) =
             wayXml.Elements(xn "tag")|> Seq.exists(fun tag -> tag.Attribute(xn "k").Value = "name")
 
+    let mergeDuplicates streets =
+            streets |> 
+            Seq.groupBy(fun street -> street.name) |> 
+            Seq.map(fun (name, streetsByName) -> {name = name; points = streetsByName |> Seq.collect(fun street -> street.points) |> Seq.toList})
+
     let convert (osmXmlElement:XElement):seq<Street> = 
         let nodes = osmXmlElement.Elements(xn "node") |> Seq.map toPoint |> Seq.toList
-        let waysWithName = osmXmlElement.Elements(xn "way") |> Seq.filter wayHasName
+        let ways = osmXmlElement.Elements(xn "way") |> Seq.filter wayHasName
 
-        waysWithName |> Seq.map (wayToStreet nodes)
+        ways |> Seq.map (wayToStreet nodes) |> mergeDuplicates
