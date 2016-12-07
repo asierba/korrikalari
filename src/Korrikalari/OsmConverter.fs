@@ -4,9 +4,12 @@ module OsmConverter =
 
     open System.Xml
     open System.Xml.Linq
-
+    
     type Point = { lat: string; lon: string; id:string}
-    type Street = { name: string; points: Point seq}
+    type Street = { name: string; points: Coordinate seq} // TODO find a better name than points
+
+    let pointToCoordinate (point:Point):Coordinate =
+        { lat= float point.lat; lon= float point.lon }
 
     let xn name = XName.Get(name)
 
@@ -28,7 +31,7 @@ module OsmConverter =
     let wayToStreet nodes (wayXml:XElement)   =
             let streetName = getStreetName wayXml
             let points = getPoints nodes wayXml
-            { name = streetName; points = points}
+            { name = streetName; points = points |> Seq.map(pointToCoordinate)}
             
     let wayHasName (wayXml:XElement) =
             wayXml.Elements(xn "tag")|> Seq.exists(fun tag -> tag.Attribute(xn "k").Value = "name")

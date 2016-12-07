@@ -7,8 +7,6 @@ module StravaClient =
     open System.Net.Http
     open Newtonsoft.Json.Linq
 
-    type Coordinate = Coordinate of (float * float)
-
     let getToken =
         System.IO.File.ReadLines("strava.token") |> Seq.head
 
@@ -25,6 +23,6 @@ module StravaClient =
         let first = (jarray |> Seq.toList).Head
         let data = first.Value<JArray>("data")
         let toCoordinate item =
-            let coordinates = item |> Seq.map(float) |> Seq.toList
-            Coordinate (coordinates.[0], coordinates.[1])
+            let coordinates = item |> Seq.map(float)
+            { lat = Seq.item 0 coordinates; lon= Seq.item 1 coordinates}
         data |> Seq.map(toCoordinate)

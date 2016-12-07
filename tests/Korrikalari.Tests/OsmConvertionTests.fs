@@ -59,9 +59,9 @@ module OsmConvertionTests =
         let result = convert osmXml |> Seq.toList
 
         let streets = [{ name = "Nowhere Street"; 
-                        points = [{ lat= "54.0901447"; lon= "12.2516513"; id="292403538" }; 
-                                  { lat= "54.0901447"; lon= "13.2516513"; id="298884289" }; 
-                                  { lat= "54.0901447"; lon= "14.2516513"; id="261728686" }]
+                        points = [ { lat= 54.0901447; lon= 12.2516513 }; 
+                                   { lat= 54.0901447; lon= 13.2516513 }; 
+                                   { lat= 54.0901447; lon= 14.2516513 }]
                        }]
         Assert.Equal<Street list>(result, streets)
 
@@ -94,14 +94,14 @@ module OsmConvertionTests =
 
         let streets = [ 
             {   name = "Street 1"; 
-                points = [  { lat= "54"; lon= "12"; id="1" };
-                            { lat= "54"; lon= "13"; id="2" }; 
-                            { lat= "54"; lon= "14"; id="3" }]
+                points = [ { lat= 54.0; lon= 12.0};
+                           { lat= 54.0; lon= 13.0}; 
+                           { lat= 54.0; lon= 14.0}]
             }; 
             {   name = "Street 2"; 
-                points = [  { lat= "54"; lon= "14"; id="3" }; 
-                            { lat= "56"; lon= "23"; id="4" }; 
-                            { lat= "57"; lon= "43"; id="5" }]}
+                points = [  { lat= 54.0; lon= 14.0}; 
+                            { lat= 56.0; lon= 23.0}; 
+                            { lat= 57.0; lon= 43.0}]}
             ]
         Assert.Equal<Street list>(result, streets)
 
@@ -134,11 +134,11 @@ module OsmConvertionTests =
 
         let streets = [ 
             {   name = "Duplicated Street"; 
-                points = [  { lat= "54"; lon= "12"; id="1" };
-                            { lat= "54"; lon= "13"; id="2" }; 
-                            { lat= "54"; lon= "14"; id="3" };  
-                            { lat= "54"; lon= "14"; id="3" }; 
-                            { lat= "56"; lon= "23"; id="4" }; 
-                            { lat= "57"; lon= "43"; id="5" }]}
+                points = [  { lat= 54.0; lon= 12.0 };
+                            { lat= 54.0; lon= 13.0 }; 
+                            { lat= 54.0; lon= 14.0 };  
+                            { lat= 54.0; lon= 14.0 }; 
+                            { lat= 56.0; lon= 23.0 }; 
+                            { lat= 57.0; lon= 43.0 }]}
             ]
         Assert.Equal<Street list>(result, streets)
