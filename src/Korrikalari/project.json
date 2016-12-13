@@ -8,6 +8,7 @@
       "includeFiles": [
         "Coordinate.fs",
         "StravaClient.fs",
+        "GoogleMapsClient.fs",
         "OsmConverter.fs",
         "StreetRepository.fs",
         "Program.fs"
