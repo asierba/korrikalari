@@ -16,10 +16,13 @@ let main argv =
     //     street.points |> Seq.iter (fun point -> printfn "\t(%s, %s)" point.lat point.lon)
     // streets |> Seq.iter (printStreet)
     // streets  |> Seq.length |> printfn "%i streets in file!"
+    
+    let mostRecentActivity = StravaClient.getMostRecentActivity
+    // printfn "%i" mostRecentActivityId
 
-    let coordinates = StravaClient.getActivityCoordinates 780826706
-    // coordinates |> Seq.iter (printfn "%A")
+    let coordinates = StravaClient.getActivityCoordinates mostRecentActivity
+    // // coordinates |> Seq.iter (printfn "%A")
 
     let streetNames = coordinates |> Seq.map  GoogleMapsClient.getClosestStreet |> Seq.choose id |> Seq.distinct
-    streetNames |> Seq.iter (printfn "%A")
+    streetNames |> Seq.iter (printfn "%s")
     0 
