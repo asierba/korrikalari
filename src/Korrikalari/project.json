@@ -11,6 +11,7 @@
         "GoogleMapsClient.fs",
         "OsmConverter.fs",
         "StreetRepository.fs",
+        "WebClient.fs",
         "Program.fs"
       ]
     }
