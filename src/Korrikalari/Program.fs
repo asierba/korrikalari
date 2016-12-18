@@ -8,6 +8,8 @@ let measure action =
     printfn "%fs: %A" stopWatch.Elapsed.TotalSeconds action
     result
 
+let getClosestStreet = GoogleMapsClient.getClosestStreet WebClient.get
+
 [<EntryPoint>]
 let main argv = 
     // let streets = StreetRepository.getStreets |> Seq.sortBy(fun street -> street.name)
@@ -22,7 +24,7 @@ let main argv =
 
     let coordinates = StravaClient.getActivityCoordinates mostRecentActivity
     // // coordinates |> Seq.iter (printfn "%A")
-
-    let streetNames = coordinates |> Seq.map  GoogleMapsClient.getClosestStreet |> Seq.choose id |> Seq.distinct
+    
+    let streetNames = coordinates |> Seq.map getClosestStreet|> Seq.choose id |> Seq.distinct
     streetNames |> Seq.iter (printfn "%s")
     0 
