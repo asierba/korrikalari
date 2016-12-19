@@ -26,5 +26,5 @@ let main argv =
     // // coordinates |> Seq.iter (printfn "%A")
     
     let streetNames = coordinates |> Seq.map getClosestStreet|> Seq.choose id |> Seq.distinct
-    streetNames |> Seq.iter (printfn "%s")
+    streetNames |> Seq.iteri (fun i name -> printfn "%3i.- %s" (i+1) name)
     0 
