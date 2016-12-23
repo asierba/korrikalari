@@ -12,6 +12,8 @@
         "OsmConverter.fs",
         "StreetRepository.fs",
         "WebClient.fs",
+        "MainMiddleware.fs",
+        "Startup.fs",
         "Program.fs"
       ]
     }
@@ -19,10 +21,10 @@
   "tools": {
     "dotnet-compile-fsc": "1.0.0-preview2-*"
   },
-  
   "frameworks": {
     "netcoreapp1.0": {
       "dependencies": {
+        "Microsoft.AspNetCore" : "1.1.0-preview1-final",
         "System.Net.Http": "4.3.0",
         "Newtonsoft.Json" :"9.0.1",
         "Microsoft.NETCore.App": {
