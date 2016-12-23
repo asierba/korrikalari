@@ -1,14 +1,14 @@
 ﻿open System
 open Korrikalari
 
-let measure action =
-    let stopWatch = System.Diagnostics.Stopwatch.StartNew()
-    let result = action()
-    stopWatch.Stop()
-    printfn "%fs: %A" stopWatch.Elapsed.TotalSeconds action
-    result
-
 let getClosestStreet = GoogleMapsClient.getClosestStreet WebClient.get
+
+let getMostRecentActivity = 
+    StravaClient.getMostRecentActivity (WebClient.getWithHeaders [StravaClient.authHeader])
+
+let getActivityCoordinates =
+    StravaClient.getActivityCoordinates (WebClient.getWithHeaders [StravaClient.authHeader])
+
 
 [<EntryPoint>]
 let main argv = 
@@ -19,10 +19,10 @@ let main argv =
     // streets |> Seq.iter (printStreet)
     // streets  |> Seq.length |> printfn "%i streets in file!"
     
-    let mostRecentActivity = StravaClient.getMostRecentActivity
+    let mostRecentActivity = getMostRecentActivity()
     // printfn "%i" mostRecentActivityId
 
-    let coordinates = StravaClient.getActivityCoordinates mostRecentActivity
+    let coordinates = getActivityCoordinates mostRecentActivity
     // // coordinates |> Seq.iter (printfn "%A")
     
     let streetNames = coordinates |> Seq.map getClosestStreet|> Seq.choose id |> Seq.distinct
