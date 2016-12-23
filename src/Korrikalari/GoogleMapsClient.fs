@@ -6,9 +6,9 @@ module GoogleMapsClient =
     let getApiKey =
         System.IO.File.ReadLines("gmaps.key") |> Seq.head
 
-    let getClosestStreet getFunc coordinate = 
+    let getClosestStreet httpGet coordinate = 
         let url = sprintf "https://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f&result_type=street_address&key=%s" coordinate.lat coordinate.lon getApiKey
-        let content = getFunc(url)
+        let content = httpGet(url)
         let jobject = JObject.Parse(content)
         let results = jobject.Value<JArray>("results")
         if (results.Count > 0) then
