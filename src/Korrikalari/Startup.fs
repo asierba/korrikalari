@@ -6,6 +6,9 @@ open Microsoft.AspNetCore.Http
 type Startup() = 
 
     member this.Configure(app: IApplicationBuilder) =
-        app.UseMiddleware<MainMiddleware>() |> ignore
-
-        app.Run(fun context -> context.Response.WriteAsync(""))
+        app.UseDefaultFiles()
+         .UseStaticFiles()
+         .UseDeveloperExceptionPage()
+         .UseMiddleware<MainMiddleware>()
+         .Run(fun context -> context.Response.WriteAsync(""))
+        
