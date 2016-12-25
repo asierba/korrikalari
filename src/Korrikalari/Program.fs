@@ -1,10 +1,14 @@
 ﻿open System
 open Korrikalari
-
 open Microsoft.AspNetCore.Hosting
+open System.IO
 
 [<EntryPoint>]
 let main argv = 
-    let host = WebHostBuilder().UseKestrel().UseStartup<Startup>().Build()
-    host.Run()
+    WebHostBuilder()
+        .UseKestrel()
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseStartup<Startup>()
+        .Build()
+        .Run()
     0
