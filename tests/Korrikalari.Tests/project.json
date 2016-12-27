@@ -6,7 +6,7 @@
     "compile": {
       "includeFiles": [
         "OsmConvertionTests.fs",
-        "GoogleMapsClientTests.fs",
+        "GoogleMapsClientShould.fs",
         "StravaClientTests.fs"
       ]
     }
