@@ -1,18 +1,14 @@
 namespace Korrikalari
 
-open Korrikalari.FileSystemCache
 open Microsoft.AspNetCore.Http
 open Newtonsoft.Json.Linq
-
+open Korrikalari.CompositionRoot
 
 type Output = { activityId: int; streets: seq<string>; coordinates: seq<Coordinate>}
 
+
 type MainMiddleware(next:RequestDelegate) =
-    let getClosestStreet = GoogleMapsClient.getClosestStreet (cache WebClient.get)
-    let getMostRecentActivity = 
-        StravaClient.getMostRecentActivity (WebClient.getWithHeaders [StravaClient.authHeader])
-    let getActivityCoordinates =
-        StravaClient.getActivityCoordinates (cache (WebClient.getWithHeaders [StravaClient.authHeader]))
+    
     
     member this.Invoke(context:HttpContext) =
         if (context.Request.Method = "GET" && (context.Request.Path.ToString() = "/api/activity/last")) then

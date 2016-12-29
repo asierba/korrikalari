@@ -13,8 +13,9 @@
         "OsmConverter.fs",
         "StreetRepository.fs",
         "WebClient.fs",
+        "CompositionRoot.fs",
         "MainMiddleware.fs",
-        "Startup.fs",
+        "Startup.fs",        
         "Program.fs"
       ]
     }
