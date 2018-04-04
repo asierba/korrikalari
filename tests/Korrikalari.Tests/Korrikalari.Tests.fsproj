@@ -1,0 +1,32 @@
+<!-- 
+ -->
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+  <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="OsmConvertionTests.fs" />
+    <Compile Include="GoogleMapsClientShould.fs" />
+    <Compile Include="StravaClientTests.fs" />
+    <Content Include="gmaps.key">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    
+  </ItemGroup>
+  <ItemGroup>
+     <ProjectReference Include="..\..\src\Korrikalari\Korrikalari.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Linq" Version="4.3" />
+    <PackageReference Include="Microsoft.FSharp.Core.netcore" Version="1.0.0-alpha-160629" />
+    <PackageReference Include="xunit" Version="2.2.0-beta2-build3300" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+</Project>
