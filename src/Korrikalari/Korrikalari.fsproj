@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+  <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="FileSystemCache.fs" />
+    <Compile Include="Coordinate.fs" />
+    <Compile Include="StravaClient.fs" />
+    <Compile Include="GoogleMapsClient.fs" />
+    <Compile Include="OsmConverter.fs" />
+    <Compile Include="StreetRepository.fs" />
+    <Compile Include="WebClient.fs" />
+    <Compile Include="CompositionRoot.fs" />
+    <Compile Include="MainMiddleware.fs" />
+    <Compile Include="Startup.fs" />
+    <Compile Include="Program.fs" />
+    <Content Include="gmaps.key">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="strava.token">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.0-preview1-final" />
+    <PackageReference Include="System.Net.Http" Version="4.3.0" />
+    <PackageReference Include="Microsoft.FSharp.Core.netcore" Version="1.0.0-alpha-160629" />
+  </ItemGroup>
+</Project>
