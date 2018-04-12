@@ -14,3 +14,4 @@ bin
 strava.token
 src/Korrikalari/gmaps.key
 cache/
+deployment/
