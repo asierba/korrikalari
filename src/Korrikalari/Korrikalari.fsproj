@@ -21,6 +21,9 @@
     <Content Include="strava.token">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+     <Content Include="wwwroot/*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
