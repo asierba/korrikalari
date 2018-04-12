@@ -9,6 +9,9 @@ module FileSystemCache =
     let cache httpGet url =
         let fileName = Path.Combine("cache", (replaceSpecialChars url))
         
+        if not (Directory.Exists("cache")) then
+            Directory.CreateDirectory("cache") |> ignore
+
         match File.Exists(fileName) with
         | true -> File.ReadAllText(fileName)
         | false -> 
