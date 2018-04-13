@@ -1,5 +1,6 @@
 language: csharp
 solution: src/Korrikalari/Korrikalari.sln
+dotnet: 2.1.101
 script:
   - ./build.sh
   - ./tests.sh
