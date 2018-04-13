@@ -28,5 +28,5 @@ module StravaClient =
         { id = first.Value<int>("id") }
 
     let authHeader = 
-        let apiToken = System.IO.File.ReadLines("strava.token") |> Seq.head
+        let apiToken = System.Environment.GetEnvironmentVariable("STRAVA_TOKEN")
         ("Authorization", sprintf "Bearer %s" apiToken)
