@@ -15,12 +15,6 @@
     <Compile Include="MainMiddleware.fs" />
     <Compile Include="Startup.fs" />
     <Compile Include="Program.fs" />
-    <Content Include="gmaps.key">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="strava.token">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
      <Content Include="wwwroot/*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

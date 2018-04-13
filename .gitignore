@@ -11,7 +11,5 @@ bin
 
 ### Others ###
 .DS_Store
-strava.token
-src/Korrikalari/gmaps.key
 cache/
 deployment/

@@ -7,7 +7,7 @@ module GoogleMapsClient =
     type StreetName = string Option
 
     let getApiKey =
-        File.ReadLines("gmaps.key") |> Seq.head
+        System.Environment.GetEnvironmentVariable("GMAPS_KEY")
 
     let hasRouteType (element:JToken) =
                 element.Value<JArray>("types") |> Seq.exists(fun i -> i.Value<string>() = "route")

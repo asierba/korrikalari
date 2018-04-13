@@ -12,10 +12,6 @@
     <Compile Include="OsmConvertionTests.fs" />
     <Compile Include="GoogleMapsClientShould.fs" />
     <Compile Include="StravaClientTests.fs" />
-    <Content Include="gmaps.key">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    
   </ItemGroup>
   <ItemGroup>
      <ProjectReference Include="..\..\src\Korrikalari\Korrikalari.fsproj" />
