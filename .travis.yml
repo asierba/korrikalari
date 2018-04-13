@@ -1,6 +1,8 @@
 language: csharp
 solution: src/Korrikalari/Korrikalari.sln
 dotnet: 2.1.101
+services:
+  - docker
 script:
   - ./build.sh
   - ./tests.sh
