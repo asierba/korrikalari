@@ -4,3 +4,4 @@ dotnet: 2.1.101
 script:
   - ./build.sh
   - ./tests.sh
+  - ./deploy.sh
