@@ -1,3 +1,9 @@
+run: build
+	cd src/Korrikalari && dotnet run
+watch-run: build
+	cd src/Korrikalari && dotnet watch run
+
+
 deploy: publish
 	docker build -t korrikalari . 
 	docker tag korrikalari asierba/korrikalari 
@@ -9,9 +15,8 @@ publish: test
 
 test: build
 	cd tests/Korrikalari.Tests && dotnet test
-
-run: build
-	cd src/Korrikalari && dotnet run
+watch-test: build
+	cd tests/Korrikalari.Tests && dotnet watch test
 
 build: clean 
 	cd src/Korrikalari && dotnet build
