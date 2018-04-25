@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-sdk
+FROM microsoft/dotnet:2.1-runtime 
 COPY /deployment .
 WORKDIR .
 EXPOSE 5000
